@@ -34,11 +34,12 @@ export default function GiveawayForm() {
     <form action={handleParticipate} className="space-y-4">
         <div>
             <Label htmlFor="name">Name</Label>
-            <Input id="name" name="name" placeholder="Enter your name" required />
+            
+            <Input className="mt-2" id="name" name="name" placeholder="Enter your name" required />
         </div>
         <div>
             <Label htmlFor="email">Email</Label>
-            <Input id="email" name="email" placeholder="Enter your email" required type="email" />
+            <Input className="mt-2" id="email" name="email" placeholder="Enter your email" required type="email" />
         </div>
         <div />
         <Button className="w-full" type="submit">
