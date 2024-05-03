@@ -1,11 +1,15 @@
-"use client";
-
 import GiveawayForm from "./GiveawayForm";
+import vrfArtifact from "@/utils/artifacts/VRFGiveaway.json"
+import constants from "@/utils/constants";
+import { ethers } from "ethers";
+import { Participants } from "./Participants";
 
+const provider = new ethers.JsonRpcProvider(process.env.NEXT_PUBLIC_RPC);
+const contract = new ethers.Contract(constants.contractAddress, vrfArtifact.abi, provider);
 
-export function GiveawayPage() {
+export async function GiveawayPage() {
 
-
+  const hashes = await contract.getAllParticipants();
 
   return (<>
     <div
@@ -20,20 +24,17 @@ export function GiveawayPage() {
             Smart Contract URL:
           </p>
           <a className="text-blue-500 underline" href="#">
-              https://example.com/giveaway-contract
-            </a>
+            https://example.com/giveaway-contract
+          </a>
+          <p className="text-gray-500 dark:text-gray-400">
+            Check SHA256:
+          </p>
+          <a className="text-blue-500 underline" href="https://emn178.github.io/online-tools/sha256.html">
+            https://emn178.github.io/online-tools/sha256.html
+          </a>
         </div>
         <GiveawayForm />
-        <div className="bg-white dark:bg-gray-800 rounded-md p-4 space-y-2">
-          <h2 className="text-lg font-medium">Participants</h2>
-          <ul className="space-y-1 text-sm">
-            <li>example@email.com</li>
-            <li>another@example.com</li>
-            <li>participant@giveaway.com</li>
-            <li>winner@contest.org</li>
-            <li>lucky@draw.net</li>
-          </ul>
-        </div>
+        <Participants hashes={hashes} />
       </div>
     </div>
     <footer

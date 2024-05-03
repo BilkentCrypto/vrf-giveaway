@@ -8,6 +8,8 @@ import { participate } from "@/app/actions";
 
 import { useToast } from "./ui/use-toast";
 
+
+//maybe add recaptcha?
 export default function GiveawayForm() {
 
     const { toast } = useToast()
@@ -23,7 +25,7 @@ export default function GiveawayForm() {
         } else {
             toast({
                 title: "Success",
-                description: "Participated successfully!",
+                description: "Participated successfully!\nYour hash: " + res.newParticipant.emailHash,
             })   
         }
       }
