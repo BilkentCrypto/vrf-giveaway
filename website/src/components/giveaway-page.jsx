@@ -21,7 +21,7 @@ export async function GiveawayPage() {
           <p className="text-gray-500 dark:text-gray-400">
             Smart Contract URL:
           </p>
-          <a className="text-blue-500 underline" href="#">
+          <a className="text-blue-500 underline" href="https://sepolia.etherscan.io/address/0xc1FbE5097832220f7D7D721a7449850d1E4ca220#code">
           https://sepolia.etherscan.io/address/0xc1FbE5097832220f7D7D721a7449850d1E4ca220#code
           </a>
           <p className="text-gray-500 dark:text-gray-400">
