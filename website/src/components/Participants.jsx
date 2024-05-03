@@ -29,7 +29,7 @@ export function Participants() {
     return (<>
 
         <div className="bg-white dark:bg-gray-800 rounded-md p-4 space-y-2">
-            <h2 className="text-lg font-medium">Participants</h2>
+            <h2 className="text-lg font-medium">Participants {hashes && `(${hashes.length} participants)`}</h2>
             <ul className="space-y-1 text-sm">
                 {(hashes && !hashes.error) ? hashes.map((hash) =>
                     <li key={hash}>{hash}</li>

@@ -9,8 +9,6 @@ const contract = new ethers.Contract(constants.contractAddress, vrfArtifact.abi,
 
 export async function GiveawayPage() {
 
-  const hashes = await contract.getAllParticipants();
-
   return (<>
     <div
       className="flex flex-col items-center justify-center min-h-[100dvh] bg-gray-100 dark:bg-gray-900 p-4">
@@ -24,7 +22,7 @@ export async function GiveawayPage() {
             Smart Contract URL:
           </p>
           <a className="text-blue-500 underline" href="#">
-            https://example.com/giveaway-contract
+          https://sepolia.etherscan.io/address/0xc1FbE5097832220f7D7D721a7449850d1E4ca220#code
           </a>
           <p className="text-gray-500 dark:text-gray-400">
             Check SHA256:
@@ -34,7 +32,7 @@ export async function GiveawayPage() {
           </a>
         </div>
         <GiveawayForm />
-        <Participants hashes={hashes} />
+        <Participants />
       </div>
     </div>
     <footer
