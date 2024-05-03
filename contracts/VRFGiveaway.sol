@@ -53,6 +53,7 @@ contract VRFGiveaway is VRFConsumerBaseV2Plus {
         onlyAuthorized
         returns (uint256 requestId)
     {
+        require(giveawayExecuted == false, "already executed");
         giveawayExecuted = true;
 
         uint256 requestId = s_vrfCoordinator.requestRandomWords(
