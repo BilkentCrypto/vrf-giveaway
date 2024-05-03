@@ -13,7 +13,6 @@ const contract = new ethers.Contract(constants.contractAddress, vrfArtifact.abi,
 export function Participants() {
 
     const [hashes, setHashes] = useState();
-    const [listener, setListener] = useState();
 
     const fetchHashes = async () => {
         const newHashes = await contract.getAllParticipants();
@@ -23,17 +22,8 @@ export function Participants() {
 
     useEffect(() => {
         fetchHashes();
-        if(!listener) contract.on("ParticipantAdded", (hash) => {
-            console.log(hash);
-            setHashes(value => [...value, hash]);
-        })
-        setListener(true);
 
-        return () => {
-            contract.removeAllListeners("ParticipantAdded");
-        }
     }, [])
-
 
 
     return (<>
