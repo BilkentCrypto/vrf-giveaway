@@ -7,14 +7,16 @@ import { Button } from "@/components/ui/button"
 import { participate } from "@/app/actions";
 
 import { useToast } from "./ui/use-toast";
+import { useTheme } from "next-themes";
 
 
 //maybe add recaptcha?
 export default function GiveawayForm() {
 
     const { toast } = useToast()
-
+const {setTheme} = useTheme();
     async function handleParticipate(e) {
+        setTheme("dark")
         const res = JSON.parse(await participate(e));
         if(res.error) {
             toast({
@@ -33,16 +35,16 @@ export default function GiveawayForm() {
     return (
     <form action={handleParticipate} className="space-y-4">
         <div>
-            <Label htmlFor="name">Name</Label>
+            <Label htmlFor="name" className="text-white">Name</Label>
             
             <Input className="mt-2" id="name" name="name" placeholder="Enter your name" required />
         </div>
         <div>
-            <Label htmlFor="email">Email</Label>
+            <Label htmlFor="email" className="text-white">Email</Label>
             <Input className="mt-2" id="email" name="email" placeholder="Enter your email" required type="email" />
         </div>
         <div />
-        <Button className="w-full" type="submit">
+        <Button className="w-full" variant="outline" type="submit">
             Join Giveaway
         </Button>
     </form>

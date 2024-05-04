@@ -37,15 +37,17 @@ export const participate = async (formData) => {
             emailHash: emailHash,
         });
 
+        const receipt = await contract.addParticipant(emailHash);
         await newParticipant.save();
 
-        const receipt = await contract.addParticipant(emailHash);
 
         return JSON.stringify({
             newParticipant,
             receipt,
             });
     } catch (err) {
+        if(err.message.includes("giveaway executed") || err.message.includes("giveaway finished"))
+            return JSON.stringify({ error: "Giveaway is finished!" });
         return JSON.stringify({ error: err.message });
     }
 }
