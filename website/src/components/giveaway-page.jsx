@@ -26,10 +26,28 @@ export async function GiveawayPage() {
         <div className=" flex justify-center items-center ">
           <div className=" grid items-start md:justify-center">
             <h1 className="text-white text-5xl font-bold">
-              Welcome to MAYFEST.
+              Welcome to MAYFEST!
             </h1>
             <h1 className="text-white mt-10 text-sm font-medium">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              We are launching a verifiable and transparent giveaway by using the potential of the blockchain technology. 
+              Conventional giveaway systems do not provide a way to three important things:
+            </h1>
+            <h1 className="text-white text-sm font-medium">
+              Is source of randomness can be manipulated?
+            </h1>
+            <h1 className="text-white text-sm font-medium">
+              Is the provided results are really first execution of the giveaway?
+            </h1>
+            <h1 className="text-white text-sm font-medium">
+              Is participants list manipulated?
+            </h1>
+            <h1 className="text-white mt-2 text-sm font-medium">
+              We solve this problems via using some blockchain methods. 
+              Firstly, we use verifiable randommness source from Chainlink VRF.
+              Secondly, we have deployed a smart contrat resistant to change.
+              And finally, execution of the giveaway is only executed once and results are transparent to everyone.
+              To not leak any personal data, we store only the hashes of the mails on Ethereum blockchain.
+              But to provide the results mail and user name will be stored in the database, and winners will be announced after the giveaway.
             </h1>
             <h1 className=" text-white mt-10 flex text-sm font-medium ">
               Follow Us:
@@ -40,6 +58,17 @@ export async function GiveawayPage() {
               </a>
 
             </h1>
+            <h1 className=" text-white mt-2 flex text-sm font-medium ">
+              Github Repo:
+              <a className=" ml-1 underline" href="  https://github.com/BilkentCrypto/vrf-giveaway">
+              https://github.com/BilkentCrypto/vrf-giveaway
+              </a>
+             
+
+            </h1>
+            <h1 className="text-white mt-2 text-sm font-medium">
+             Good luck!
+             </h1>
           </div>
         </div>
         <div className=" mt-10 lg:mt-10 ">
@@ -47,7 +76,7 @@ export async function GiveawayPage() {
           <div className="text-center space-y-2">
             <h1 className="text-3xl font-bold"> Join Our Giveaway</h1>
             <p className="text-gray-500 text-sm dark:text-gray-400">
-              Enter your name and email to participate.
+              Enter your name and Bilkent email to participate.
             </p>
             <p className="text-gray-500 dark:text-gray-400">
               Smart Contract URL:
