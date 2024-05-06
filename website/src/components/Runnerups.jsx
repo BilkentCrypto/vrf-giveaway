@@ -3,11 +3,12 @@ import constants from "@/utils/constants";
 import Participant from "@/utils/models/participant";
 import { ethers } from "ethers";
 
+
 const provider = new ethers.JsonRpcProvider(process.env.NEXT_PUBLIC_RPC);
 const contract = new ethers.Contract(constants.contractAddress, vrfArtifact.abi, provider);
 
 
-const WINNER_NO = 3;
+const WINNER_NO = 5;
 
 export async function Runnerups() {
 
@@ -15,9 +16,10 @@ export async function Runnerups() {
 
     const isDone = await contract.giveawayDone();
     if (isDone) {
-        for (let i = 1; i < WINNER_NO; i++) {
+        for (let i = 2; i < WINNER_NO; i++) {
             let winnerIndex = await contract.getPrize(i)
             let winnerHash = await contract.participants(winnerIndex);
+
             const participant = await Participant.findOne({ emailHash: winnerHash });
             winners.push(participant);
         }

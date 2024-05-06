@@ -1,14 +1,11 @@
 import mongoose from 'mongoose';
 
-export const connectDB = () => {
-  mongoose
+export const connectDB = async () => {
+if(mongoose.connection.readyState == 0) {
+  console.log("Connecting db")
+  await mongoose
     .connect(process.env.DB_URL, {
       dbName: 'Cluster0',
     })
-    .then(() => {
-      console.log('Connected to MongoDB');
-    })
-    .catch(err => {
-      console.log(err);
-    });
+  }
 };

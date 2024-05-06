@@ -1,5 +1,6 @@
 import vrfArtifact from "@/utils/artifacts/VRFGiveaway.json"
 import constants from "@/utils/constants";
+import { connectDB } from "@/utils/db";
 import Participant from "@/utils/models/participant";
 import { ethers } from "ethers";
 
@@ -7,18 +8,21 @@ const provider = new ethers.JsonRpcProvider(process.env.NEXT_PUBLIC_RPC);
 const contract = new ethers.Contract(constants.contractAddress, vrfArtifact.abi, provider);
 
 
-const WINNER_NO = 1;
+const WINNER_NO = 2;
 
 export async function Winners() {
 
     const winners = [];
-
+    connectDB();
     const isDone = await contract.giveawayDone();
     if (isDone) {
-        for (let i = 0; i < WINNER_NO; i++) {
+        for (let i = 1; i < WINNER_NO; i++) {
             let winnerIndex = await contract.getPrize(i)
+            console.log("index:", winnerIndex);
             let winnerHash = await contract.participants(winnerIndex);
-            const participant = await Participant.findOne({ emailHash: winnerHash });
+            console.log("winner:", winnerHash)
+
+            const participant = await Participant.findOne({ emailHash: winnerHash.toString() });
             winners.push(participant);
         }
     }
