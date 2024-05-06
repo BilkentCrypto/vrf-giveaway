@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/card"
 import { Winners } from "./Winners";
 import { Suspense } from "react";
+import { Runnerups } from "./Runnerups";
 
 const provider = new ethers.JsonRpcProvider(process.env.NEXT_PUBLIC_RPC);
 const contract = new ethers.Contract(constants.contractAddress, vrfArtifact.abi, provider);
@@ -130,7 +131,10 @@ export async function GiveawayPage() {
           <h2 className="text-lg font-medium text-white text-center">Winners</h2>
  <p className="text-white text-center">Fetching winners...</p>
         </div>}>
+          <div className="flex flex-col gap-8 ">
           <Winners />
+          <Runnerups/>
+          </div>
         </Suspense>
         <Participants />
       </div>
