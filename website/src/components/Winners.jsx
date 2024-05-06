@@ -13,7 +13,7 @@ const WINNER_NO = 2;
 export async function Winners() {
 
     const winners = [];
-    connectDB();
+    await connectDB();
     const isDone = await contract.giveawayDone();
     if (isDone) {
         for (let i = 1; i < WINNER_NO; i++) {

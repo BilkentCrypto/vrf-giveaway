@@ -5,7 +5,7 @@ import { sha256 } from "js-sha256";
 import { ethers } from "ethers";
 import constants from "@/utils/constants";
 import vrfArtifact from "@/utils/artifacts/VRFGiveaway.json"
-import mongoose from "mongoose";
+import { connectDB } from "@/utils/db";
 
 
 const provider = new ethers.JsonRpcProvider(process.env.NEXT_PUBLIC_RPC);
@@ -14,8 +14,8 @@ const contract = new ethers.Contract(constants.contractAddress, vrfArtifact.abi,
 console.log("eth address: ", wallet.address)
 
 export const participate = async (formData) => {
-    console.log(mongoose.connection)
     try {
+        await connectDB();
         const name = formData.get("name");
         const email = formData.get("email");
 
@@ -52,8 +52,8 @@ export const participate = async (formData) => {
 }
 
 export const getHashes = async () => {
-    console.log(mongoose.connection)
     try {
+        await connectDB();
         const hashes = await contract.getAllParticipants();
         return JSON.stringify(hashes);
     } catch (err) {

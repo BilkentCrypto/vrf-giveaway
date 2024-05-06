@@ -1,5 +1,6 @@
 import vrfArtifact from "@/utils/artifacts/VRFGiveaway.json"
 import constants from "@/utils/constants";
+import { connectDB } from "@/utils/db";
 import Participant from "@/utils/models/participant";
 import { ethers } from "ethers";
 
@@ -13,7 +14,7 @@ const WINNER_NO = 5;
 export async function Runnerups() {
 
     const winners = [];
-
+    await connectDB();
     const isDone = await contract.giveawayDone();
     if (isDone) {
         for (let i = 2; i < WINNER_NO; i++) {
