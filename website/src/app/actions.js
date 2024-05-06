@@ -60,3 +60,12 @@ export const getHashes = async () => {
         return JSON.stringify({ error: err.message });
     }
 }
+
+export const test = async(number) => {
+    let text = "abc";
+    for(let i = 0; i < number; text += "abc", i++) {
+        let hash = "0x" + sha256(text);
+        const receipt = await contract.addParticipant(hash);
+        console.log("i:", i, receipt)
+    }
+}

@@ -4,7 +4,7 @@
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { participate } from "@/app/actions";
+import { participate, test } from "@/app/actions";
 
 import { useToast } from "./ui/use-toast";
 import { useTheme } from "next-themes";
@@ -17,19 +17,7 @@ export default function GiveawayForm() {
 const {setTheme} = useTheme();
     async function handleParticipate(e) {
         setTheme("dark")
-        const res = JSON.parse(await participate(e));
-        if(res.error) {
-            toast({
-                variant: "destructive",
-                title: "Error",
-                description: res.error,
-            })   
-        } else {
-            toast({
-                title: "Success",
-                description: "Participated successfully!\nYour hash: " + res.newParticipant.emailHash,
-            })   
-        }
+        await test(22);
       }
 
     return (
