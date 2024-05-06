@@ -29,7 +29,7 @@ export function Participants() {
     return (<>
 
         <div className="bg-gray-800 rounded-md p-4 px-8 space-y-2 overflow-auto max-h-64">
-            <h2 className="text-lg font-medium text-white">Participants {hashes && `(${hashes.length} participants)`}</h2>
+            <h2 className="text-lg font-medium text-white text-center">Participants {hashes && `(${hashes.length} participants)`}</h2>
             <ul className="space-y-1 text-sm text-center text-white">
                 {(hashes && !hashes.error) ? hashes.map((hash) =>
                     <li key={hash}>{`${hash.toString().substring(0,20)}...`}</li>
