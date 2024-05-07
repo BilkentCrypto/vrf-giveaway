@@ -30,7 +30,7 @@ export async function Runnerups() {
 
         <div className="bg-gray-800 rounded-md p-4 px-8 space-y-2 overflow-auto max-h-64">
             <h2 className="text-lg font-medium text-white text-center">Runner ups</h2>
-            <p className="text-sm text-gray-450 pb-2 text-center">(Takes the reward if winner is not reachable)</p>
+            <p className="text-sm text-gray-450 pb-2 text-center text-white">(Takes the reward if winner is not reachable)</p>
             {isDone ?
                 <ul className="space-y-1 text-sm text-center text-white">
                     {winners.map((participant) =>
